@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Simulation Running</h2>
+
+<table>
+    <tr><td>Total Sent</td><td>@ViewBag.sent</td></tr>
+    <tr><td>Total Errors</td><td>@ViewBag.errors</td></tr>
+</table>
+
+<h3>Breakdown</h3>
+
+<table>
+    <tr><th>Batch</th><th>Sent</th></tr>
+    @foreach (var i in ViewBag.all_sent) {
+        <tr><td>@i.Key</td><td>@i.Value</td></tr>
+    }
+</table>
+
+<h3>Control</h3>
+
+<div>
+    <form action="~/simulation/setvelocity" method="get">
+        <input type="text" name="velocity" value="0.25" />
+        <input type="submit" value="OK" />
+    </form>
+</div>
+
+<p><a href="~/simulation/stop">Stop simulation</a></p>

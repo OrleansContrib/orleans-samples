@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulationControl", "SimulationControl\SimulationControl.csproj", "{12D06990-0019-468E-B4CB-9FC99E1D5CFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrainInterfaces", "GrainInterfaces\GrainInterfaces.csproj", "{68A4561A-F156-4422-BCE0-AE20F438E034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grains", "Grains\Grains.csproj", "{7C51FFB5-606E-479D-B029-DA2AE3374BCA}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudSimulator", "SimWorker\CloudSimulator.ccproj", "{30E75E58-3516-45BF-8AFA-227A23340802}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatorHost", "SimulatorRole\SimulatorHost.csproj", "{A36CB0B1-152F-4CAB-A72E-B30FFA174403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatorUI", "SimulatorUI\SimulatorUI.csproj", "{0AB8C32A-76E9-4AA5-9B67-B81E3888F538}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12D06990-0019-468E-B4CB-9FC99E1D5CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D06990-0019-468E-B4CB-9FC99E1D5CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D06990-0019-468E-B4CB-9FC99E1D5CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D06990-0019-468E-B4CB-9FC99E1D5CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A4561A-F156-4422-BCE0-AE20F438E034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A4561A-F156-4422-BCE0-AE20F438E034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A4561A-F156-4422-BCE0-AE20F438E034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A4561A-F156-4422-BCE0-AE20F438E034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C51FFB5-606E-479D-B029-DA2AE3374BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C51FFB5-606E-479D-B029-DA2AE3374BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C51FFB5-606E-479D-B029-DA2AE3374BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C51FFB5-606E-479D-B029-DA2AE3374BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30E75E58-3516-45BF-8AFA-227A23340802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E75E58-3516-45BF-8AFA-227A23340802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E75E58-3516-45BF-8AFA-227A23340802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E75E58-3516-45BF-8AFA-227A23340802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A36CB0B1-152F-4CAB-A72E-B30FFA174403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A36CB0B1-152F-4CAB-A72E-B30FFA174403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A36CB0B1-152F-4CAB-A72E-B30FFA174403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A36CB0B1-152F-4CAB-A72E-B30FFA174403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB8C32A-76E9-4AA5-9B67-B81E3888F538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB8C32A-76E9-4AA5-9B67-B81E3888F538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB8C32A-76E9-4AA5-9B67-B81E3888F538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB8C32A-76E9-4AA5-9B67-B81E3888F538}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,81 @@
+﻿
+<div class="row" id="content">
+
+</div>
+<div id='mapDiv'></div>       
+<div id="debug"></div>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+
+<script>
+    var map;
+    var devices = [];
+
+    function update(message) {
+        var loc = new Microsoft.Maps.Location(message.Latitude, message.Longitude);
+        if (devices[message.DeviceId]) {
+            devices[message.DeviceId].setLocation(loc);
+        } else {
+            devices[message.DeviceId] = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(devices[message.DeviceId]);
+        }
+
+        if (message.Description !== null)
+            devices[message.DeviceId].setOptions({ icon: "/Content/pinGreen.png" })
+        else
+        { 
+            if (message.Velocity < 600) {
+                devices[message.DeviceId].setOptions({ icon: "/Content/pinBlue.png" })
+            } else {
+                devices[message.DeviceId].setOptions({ icon: "/Content/pinRed.png" })
+            }
+        }
+
+    }
+
+    function GetURLParameterValue(param) {
+        var pageURL = window.location.hash.substring(1);
+        var urlVariables = pageURL.split('&');
+        for (var i = 0; i < urlVariables.length; i++) {
+            var parameterName = urlVariables[i].split('=');
+            if (parameterName[0] == param) {
+                return parameterName[1];
+            }
+        }
+    }
+
+    $(document).ready(function () {
+        var hub = $.connection.locationHub;
+        
+        var latitude = GetURLParameterValue("lat");
+        var longitude = GetURLParameterValue("lon");
+        var zoom = GetURLParameterValue("zoom");
+
+        // Default: (37.75, -122.45) San Francisco - zoom 13
+        // Sample: http://devicetracker.cloudapp.net/#zoom=10&lat=52.09&lon=5.12 (52.09, 5.12) Netherlands - zoom 10
+        var mapLocation = new Microsoft.Maps.Location(latitude ? parseFloat(latitude) : 37.75, longitude ? parseFloat(longitude) : -122.45)
+        var mapZoom = zoom ? parseInt(zoom) : 13;
+
+        hub.client.locationUpdate = function (message) {
+            update(message);
+        }
+
+        hub.client.locationUpdates = function (messages) {
+            messages.Messages.forEach(update);
+        }
+
+        $.connection.hub.start().done(function () {
+            console.log("listening for messages");
+        })
+
+        var mapOptions = {
+            credentials: "AsXFIIaDHMYdplrJ-99sUdt9deszdnQdF422ga9WRPz3WwGyafLH2p2ragutiJlD", //"YOUR_BING_MAPS_KEY",
+            center: mapLocation,
+            mapTypeId: Microsoft.Maps.MapTypeId.auto,
+            zoom: mapZoom,
+            showScalebar: false
+        }
+
+        map = new Microsoft.Maps.Map(document.getElementById("mapDiv"), mapOptions);
+    });
+
+</script>

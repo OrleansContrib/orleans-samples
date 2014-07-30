@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Orleans Simulator</h1>
+    <p class="lead">Distributed HTTP load testing using the Orleans Framework.</p>
+    <p>Learn more about Orleans.</p>
+</div>
+
+<div class="row">
+
+    <form action="/simulation/start">
+        Batch count: <input type="text" name="batchcount" value="1" /><br/>
+        Batch size: <input type="text" name="batchsize" value="10" /><br />
+        Delay (s): <input type="text" name="delay" value="15" /><br />
+        Run time (s): <input type="text" name="runtime" value="300" /><br />
+        URL : <input type="text" name="testurl" value="http://devicetracker.cloudapp.net:8080/api/devices/processmessage" /><br/>
+        <input type="submit" />
+    </form>
+
+</div>

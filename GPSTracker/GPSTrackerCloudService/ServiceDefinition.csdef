@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="GPSTrackerCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-10.2.2">
+  <WorkerRole name="GPSTracker.AzureSilo" vmsize="ExtraSmall">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <Endpoints>
+      <InternalEndpoint name="OrleansSiloEndpoint" protocol="tcp" port="11111"></InternalEndpoint>
+      <InternalEndpoint name="OrleansProxyEndpoint" protocol="tcp" port="30000"></InternalEndpoint>
+    </Endpoints>
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" />
+    </ConfigurationSettings>
+    <LocalResources>
+      <LocalStorage name ="LocalStoreDirectory" cleanOnRoleRecycle="false"/>
+    </LocalResources>
+  </WorkerRole>
+  <WebRole name="GPSTracker.WebAPI" vmsize="Small">
+    <Sites>
+      <Site name="Web">
+        <Bindings>
+          <Binding name="APIEndpoint" endpointName="APIEndpoint" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="APIEndpoint" protocol="http" port="8080" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+  <WebRole name="GPSTracker.Web" vmsize="ExtraSmall">
+    <Sites>
+      <Site name="Web">
+        <Bindings>
+          <Binding name="WebEndpoint" endpointName="WebEndpoint" />
+          <Binding name="InternalSignalR" endpointName="InternalSignalR"/>
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="WebEndpoint" protocol="http" port="80" />
+      <InternalEndpoint name="InternalSignalR" protocol="http" port="8888"></InternalEndpoint>
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" />
+    </ConfigurationSettings>
+  </WebRole>
+</ServiceDefinition>
